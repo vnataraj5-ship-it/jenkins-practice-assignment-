@@ -1,0 +1,33 @@
+pipleline {
+    agent any 
+    stages {
+    stage('git repo') {
+    steps {
+gitbranch: 'main', git url: 'https://github.com/vnataraj5-ship-it/jenkins-practice-assignment-.git'
+  }
+}
+   stage('parallel build and test stage') {
+    parallel {
+  stage ('build') {
+    steps {
+echo "build start"
+sh 'sleep 5'
+    }
+}
+    stage ('test') {
+    steps {
+echo "test running"
+sh 'sleep 5'
+      }
+    }
+  }
+}
+    stage ('deploy') {
+    steps {
+echo "deploying the build"
+        }
+      }
+    }
+  }
+ 
+
