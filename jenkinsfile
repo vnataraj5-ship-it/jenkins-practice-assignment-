@@ -1,38 +1,54 @@
 pipeline {
-    agent any
+
+    agent any 
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/sachinkp-art/devops-oct-25.git'
-            }
-        }
+    stage('git repo') {
 
-        stage('Parallel Build & Test') {
-            parallel {
-                stage('Build') {
-                    steps {
-                        echo "Building the application..."
-                        sh "sleep 5"   
-                    }
-                }
+    steps {
 
-                stage('Run Tests') {
-                    steps {
-                        echo "Running test cases..."
-                        sh "sleep 5"   
-                    }
-                }
-            }
-        }
+git branch: 'main', 
 
-        stage('Deploy') {
-            steps {
-                echo "Deploying the application..."
-                echo "this is to check github webhook"
-            }
-        }
+  url: 'https://github.com/vnataraj5-ship-it/jenkins-practice-assignment-.git'
+
+  }
+
+}
+   stage('parallel build and test stage') {
+
+    parallel {
+
+  stage ('build') {
+
+    steps {
+
+echo "build start"
+
+sh 'sleep 5'
 
     }
 }
+    stage ('test') {
+
+    steps {
+
+echo "test running"
+
+sh 'sleep 5'
+
+      }
+    }
+  }
+}
+    stage ('deploy') {
+
+    steps {
+
+echo "deploying the build"
+
+        }
+      }
+    }
+  }
+ 
