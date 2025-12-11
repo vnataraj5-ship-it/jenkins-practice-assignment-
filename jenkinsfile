@@ -3,7 +3,8 @@ pipleline {
     stages {
     stage('git repo') {
     steps {
-gitbranch: 'main', git url: 'https://github.com/vnataraj5-ship-it/jenkins-practice-assignment-.git'
+git branch: 'main', 
+  url: 'https://github.com/vnataraj5-ship-it/jenkins-practice-assignment-.git'
   }
 }
    stage('parallel build and test stage') {
